@@ -15,6 +15,8 @@ reply.
 Mail clients group messages by the RFC 5322 `Message-ID` header. The webhook's
 `smtp-id` is that `Message-ID`, so it's the value to use.
 
+The reply's subject should be the original subject with `Re: ` in front. Gmail uses the subject as a second signal when grouping, so a mismatched subject is more likely to start a new conversation.
+
 ## Sequence
 
 ```
@@ -70,6 +72,7 @@ the ID before delivery.
 - **The reply starts a new thread.** Check which value you sent. The
   `X-Message-Id` will not thread. Send the `smtp-id`, and keep its angle
   brackets.
+- **The reply is in a separate conversation.** Check that the subject is the original subject with `Re: ` in front, as well as the `smtp-id`.
 - **There is no `smtp-id` yet.** The reply has to wait for the `delivered` or
   `processed` event. Don't send it from the API response alone.
 - **No event matches the stored ID.** Compare the part of `sg_message_id` before
