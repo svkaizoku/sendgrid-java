@@ -30,16 +30,14 @@ public class InlineFileAttachmentExample {
         String fromAddress = "sender@example.com";
         String toAddress = "recipient@example.com";
 
-        String html = """
-                <!doctype html>
-                <html>
-                  <body>
-                    <h1>Welcome!</h1>
-                    <p>This image is embedded in the email:</p>
-                    <img src="cid:company-logo" alt="Company logo" width="96" />
-                  </body>
-                </html>
-                """;
+        String html = "<!doctype html>"
+                + "<html>"
+                + "<body>"
+                + "<h1>Welcome!</h1>"
+                + "<p>This image is embedded in the email:</p>"
+                + "<img src=\"cid:company-logo\" alt=\"Company logo\" width=\"96\" />"
+                + "</body>"
+                + "</html>";
 
         Mail mail = new Mail(
                 new Email(fromAddress),
